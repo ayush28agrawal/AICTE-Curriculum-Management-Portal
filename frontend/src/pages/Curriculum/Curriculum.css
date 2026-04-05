@@ -1,0 +1,511 @@
+.curriculum-list-page,
+.create-curriculum-page,
+.curriculum-detail-page {
+  padding: 32px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.page-header-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.back-btn {
+  margin-bottom: 12px;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1E293B;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.page-subtitle {
+  font-size: 15px;
+  color: #64748b;
+  margin: 0;
+}
+
+.page-header-title {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.page-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.meta-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #cbd5e1;
+}
+
+.status-badge-lg {
+  padding: 8px 16px;
+  font-size: 13px;
+}
+
+/* Filters */
+.filters-section {
+  padding: 20px 24px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.filters-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.filter-item {
+  min-width: 180px;
+}
+
+/* Form */
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.form-error-message {
+  padding: 14px 18px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  color: #dc2626;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+/* Info Card */
+.info-card {
+  margin-bottom: 24px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.info-item label {
+  display: block;
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.info-item span {
+  font-size: 16px;
+  color: #1E293B;
+  font-weight: 500;
+}
+
+.description {
+  padding-top: 24px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.description label {
+  display: block;
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.description p {
+  font-size: 15px;
+  color: #1E293B;
+  margin: 0;
+  line-height: 1.7;
+}
+
+/* Syllabus Card */
+.syllabus-card {
+  margin-bottom: 24px;
+}
+
+.syllabus-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.file-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.file-icon {
+  font-size: 40px;
+  color: #2563EB;
+}
+
+.file-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.file-name {
+  font-size: 15px;
+  color: #1E293B;
+  font-weight: 500;
+}
+
+.file-date {
+  font-size: 13px;
+  color: #64748b;
+}
+
+.no-syllabus {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.no-syllabus-icon {
+  font-size: 56px;
+  color: #cbd5e1;
+  margin-bottom: 16px;
+}
+
+.no-syllabus p {
+  color: #64748b;
+  margin: 0 0 20px 0;
+  font-size: 15px;
+}
+
+/* Semesters */
+.semesters-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.semester-card {
+  background: #F6F8FB;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.semester-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.semester-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.semester-header h4 {
+  font-size: 17px;
+  font-weight: 600;
+  color: #1E293B;
+  margin: 0;
+}
+
+.credits-badge {
+  background: #2563EB;
+  color: #ffffff;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.subjects-table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.subjects-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  min-width: 500px;
+}
+
+.subjects-table th,
+.subjects-table td {
+  padding: 14px 18px;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.subjects-table th {
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: #ffffff;
+}
+
+.subjects-table td {
+  font-size: 14px;
+  color: #1E293B;
+}
+
+.subjects-table tr:last-child td {
+  border-bottom: none;
+}
+
+.subject-name {
+  font-weight: 500;
+}
+
+.learning-outcomes {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.type-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.type-theory {
+  background: #dbeafe;
+  color: #2563EB;
+}
+
+.type-practical {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.type-elective {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.no-subjects {
+  color: #64748b;
+  font-size: 14px;
+  text-align: center;
+  padding: 20px;
+  margin: 0;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 48px 20px;
+  color: #64748b;
+}
+
+.empty-state p {
+  margin: 0 0 20px 0;
+  font-size: 15px;
+}
+
+/* Page Actions */
+.page-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+/* Modal Actions */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+/* Status badges */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.status-draft {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.status-published {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.status-archived {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .curriculum-list-page,
+  .create-curriculum-page,
+  .curriculum-detail-page {
+    padding: 24px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .page-title {
+    font-size: 24px;
+  }
+
+  .filters-section {
+    padding: 16px 20px;
+  }
+
+  .filters-row {
+    flex-direction: column;
+  }
+
+  .filter-item {
+    width: 100%;
+    min-width: auto;
+  }
+  
+  .semester-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .syllabus-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .subjects-table {
+    min-width: auto;
+  }
+
+  .subjects-table thead {
+    display: none;
+  }
+
+  .subjects-table tbody tr {
+    display: block;
+    margin-bottom: 12px;
+    padding: 16px;
+    border-bottom: none;
+    border-radius: 8px;
+  }
+
+  .subjects-table td {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  .subjects-table td:last-child {
+    border-bottom: none;
+  }
+
+  .subjects-table td::before {
+    content: attr(data-label);
+    font-size: 11px;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+  }
+}
+
+@media (max-width: 480px) {
+  .curriculum-list-page,
+  .create-curriculum-page,
+  .curriculum-detail-page {
+    padding: 20px 16px;
+  }
+
+  .page-title {
+    font-size: 22px;
+  }
+
+  .page-actions {
+    flex-direction: column;
+  }
+
+  .page-actions .btn {
+    width: 100%;
+  }
+
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .form-actions .btn {
+    width: 100%;
+  }
+
+  .modal-actions {
+    flex-direction: column-reverse;
+  }
+
+  .modal-actions .btn {
+    width: 100%;
+  }
+}
