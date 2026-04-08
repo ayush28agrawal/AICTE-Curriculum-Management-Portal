@@ -15,18 +15,25 @@ connectDB();
 
 // Middleware
 const allowedOrigins = [
-  config.FRONTEND_URL,
+  config.FRONTEND_URL ? config.FRONTEND_URL.trim().replace(/\/$/, '') : '',
   'http://localhost:5173', 
   'http://localhost:5174', 
   'http://127.0.0.1:5173', 
-  'http://127.0.0.1:5174'
+  'http://127.0.0.1:5174',
+  'https://aicte-curriculum-management-portal.vercel.app' // Hardcoded fallback just in case
 ];
 
 app.use(cors({
   origin: function(origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
+    const isAllowed = !origin || allowedOrigins.some(o => 
+      o && origin && origin.toLowerCase().startsWith(o.toLowerCase())
+    ) || allowedOrigins.includes(origin);
+
+    if (isAllowed) {
       callback(null, true);
     } else {
+      console.warn(`[CORS Error] Blocked request from origin: ${origin}`);
+      console.warn(`[CORS Info] Allowed origins: ${allowedOrigins.join(', ')}`);
       callback(new Error('Not allowed by CORS'));
     }
   },
