@@ -138,7 +138,14 @@ const CurriculumDetail = () => {
   const handleDownloadSyllabus = async () => {
     try {
       const response = await curriculumAPI.downloadSyllabus(id);
-      downloadFile(response.data, curriculum.syllabusFile?.originalName || 'syllabus.pdf');
+      if (response.data && response.data.url) {
+        let downloadLink = response.data.url;
+        if (!downloadLink.startsWith('http')) {
+           const baseUrl = import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL.replace('/api', '') : 'http://localhost:5000';
+           downloadLink = `${baseUrl}${downloadLink}`;
+        }
+        window.open(downloadLink, '_blank');
+      }
     } catch (error) {
       alert('Failed to download syllabus');
     }

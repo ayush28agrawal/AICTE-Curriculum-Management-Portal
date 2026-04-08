@@ -77,13 +77,25 @@ const AssessmentDetails = () => {
         }
     };
 
-    const handleDownloadExcel = () => {
+    const handleDownloadExcel = async () => {
         if (!assessment || !assessment.fileUrl) {
             alert('No file attached to this assessment.');
             return;
         }
         
-        window.open(`http://localhost:5000${assessment.fileUrl}`, '_blank');
+        try {
+            const response = await assessmentAPI.downloadAssessment(id);
+            if (response.data && response.data.url) {
+                let downloadLink = response.data.url;
+                if (!downloadLink.startsWith('http')) {
+                    const baseUrl = import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL.replace('/api', '') : 'http://localhost:5000';
+                    downloadLink = `${baseUrl}${downloadLink}`;
+                }
+                window.open(downloadLink, '_blank');
+            }
+        } catch (error) {
+            alert('Failed to download file');
+        }
     };
 
     if (loading) return <PageLoading />;

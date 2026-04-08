@@ -53,7 +53,7 @@ export const curriculumAPI = {
       headers: { 'Content-Type': 'multipart/form-data' },
     }),
   downloadSyllabus: (id) => 
-    api.get(`/curriculums/${id}/download`, { responseType: 'blob' }),
+    api.get(`/curriculums/${id}/download`),
   publish: (id) => api.post(`/curriculums/${id}/publish`),
   archive: (id) => api.post(`/curriculums/${id}/archive`),
   delete: (id) => api.delete(`/curriculums/${id}`),
@@ -70,7 +70,7 @@ export const submissionAPI = {
     }),
   updateStatus: (id, data) => api.put(`/submissions/${id}/status`, data),
   downloadFile: (id) => 
-    api.get(`/submissions/${id}/download`, { responseType: 'blob' }),
+    api.get(`/submissions/${id}/download`),
   getStats: () => api.get('/submissions/stats'),
 };
 

@@ -7,7 +7,8 @@ const {
     deleteAssessment,
     getInstituteAssessments,
     publishAssessment,
-    updateAssessmentStatus
+    updateAssessmentStatus,
+    downloadAssessment
 } = require('../controllers/assessmentController');
 
 const { protect, authorize } = require('../middleware/auth');
@@ -37,5 +38,8 @@ router.route('/:id/publish')
 
 router.route('/:id/status')
     .patch(authorize('admin'), updateAssessmentStatus);
+
+router.route('/:id/download')
+    .get(authorize('institute', 'admin'), downloadAssessment);
 
 module.exports = router;

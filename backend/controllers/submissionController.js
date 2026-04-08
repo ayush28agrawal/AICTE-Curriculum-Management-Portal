@@ -125,11 +125,19 @@ exports.downloadFile = async (req, res) => {
 
     let dlUrl = submission.mappingFile.path;
     if (dlUrl.includes('res.cloudinary.com')) {
-      dlUrl = dlUrl.replace('/upload/', '/upload/fl_attachment/');
-      return res.redirect(dlUrl);
+      const cloudinary = require('cloudinary').v2;
+      const publicIdMatch = dlUrl.match(/v\d+\/(.+)$/);
+      if (publicIdMatch) {
+         const signedUrl = cloudinary.utils.private_download_url(publicIdMatch[1], '', {
+            resource_type: 'raw', type: 'upload', attachment: true
+         });
+         return res.status(200).json({ success: true, url: signedUrl });
+      }
+      return res.status(200).json({ success: true, url: dlUrl });
     }
     
-    res.download(submission.mappingFile.path, submission.mappingFile.originalName);
+    // For local files fallback
+    return res.status(200).json({ success: true, url: `/uploads/${dlUrl.split('uploads/').pop() || dlUrl}` });
   } catch (error) {
     res.status(404).json({
       success: false,

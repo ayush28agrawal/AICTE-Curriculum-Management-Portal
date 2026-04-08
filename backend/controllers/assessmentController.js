@@ -279,3 +279,36 @@ exports.updateAssessmentStatus = async (req, res) => {
         res.status(500).json({ message: 'Server Error' });
     }
 };
+
+// @desc    Download assessment file
+// @route   GET /api/assessments/:id/download
+// @access  Private (Institute, Admin)
+exports.downloadAssessment = async (req, res) => {
+    try {
+        const assessment = await Assessment.findById(req.params.id);
+        
+        if (!assessment || !assessment.fileUrl) {
+            return res.status(404).json({ success: false, message: 'File not found' });
+        }
+        
+        // Checking authorization
+        if (req.user.role === 'institute' && assessment.instituteId.toString() !== req.user._id.toString()) {
+            return res.status(403).json({ success: false, message: 'Not authorized to download this' });
+        }
+        
+        let dlUrl = assessment.fileUrl;
+        if (dlUrl.includes('res.cloudinary.com')) {
+            const cloudinary = require('cloudinary').v2;
+            const publicIdMatch = dlUrl.match(/v\d+\/(.+)$/);
+            if (publicIdMatch) {
+               const signedUrl = cloudinary.utils.private_download_url(publicIdMatch[1], '', {
+                  resource_type: 'raw', type: 'upload', attachment: true
+               });
+               return res.status(200).json({ success: true, url: signedUrl });
+            }
+        }
+        return res.status(200).json({ success: true, url: `/uploads/${dlUrl.split('uploads/').pop() || dlUrl}` });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+};

@@ -50,7 +50,14 @@ const SubmissionDetail = () => {
   const handleDownload = async () => {
     try {
       const response = await submissionAPI.downloadFile(id);
-      downloadFile(response.data, submission.mappingFile?.originalName || 'mapping.pdf');
+      if (response.data && response.data.url) {
+        let downloadLink = response.data.url;
+        if (!downloadLink.startsWith('http')) {
+           const baseUrl = import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL.replace('/api', '') : 'http://localhost:5000';
+           downloadLink = `${baseUrl}${downloadLink}`;
+        }
+        window.open(downloadLink, '_blank');
+      }
     } catch (error) {
       alert('Failed to download file');
     }

@@ -51,5 +51,11 @@ export const assessmentAPI = {
     updateStatus: async (id, data) => {
         const response = await api.patch(`/assessments/${id}/status`, data);
         return response.data;
+    },
+
+    // Download assessment
+    downloadAssessment: async (id) => {
+        const response = await api.get(`/assessments/${id}/download`);
+        return response;
     }
 };
